@@ -8,7 +8,8 @@ from moviepy import ImageClip, concatenate_videoclips, TextClip, CompositeVideoC
 from .generate_story_agent import generate_story
 from .generate_image_agent import generate_image
 from .generate_music_agent import generate_music
-from .generate_story_agent import generate_story
+from .generate_tts_agent import generate_tts_narration
+from .generate_video_agent import create_video
 
 # --- MASTER WORKFLOW ---
 def master_agent_workflow(prompt):
