@@ -5,7 +5,10 @@ from io import BytesIO
 from PIL import Image
 from autogen import AssistantAgent, UserProxyAgent
 from moviepy import ImageClip, concatenate_videoclips, TextClip, CompositeVideoClip, AudioFileClip
-
+from .generate_story_agent import generate_story
+from .generate_image_agent import generate_image
+from .generate_music_agent import generate_music
+from .generate_story_agent import generate_story
 
 # --- MASTER WORKFLOW ---
 def master_agent_workflow(prompt):
