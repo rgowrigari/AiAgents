@@ -8,7 +8,7 @@ from moviepy import ImageClip, concatenate_videoclips, TextClip, CompositeVideoC
 
 
 # --- MASTER WORKFLOW ---
-def master_workflow(prompt):
+def master_agent_workflow(prompt):
     
     # --- MASTER AGENT SETUP (LOCAL EXECUTION, NO DOCKER) ---
     
