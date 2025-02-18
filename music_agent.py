@@ -1,3 +1,11 @@
+import os
+import openai
+import requests
+from io import BytesIO
+from PIL import Image
+from autogen import AssistantAgent, UserProxyAgent
+from moviepy import ImageClip, concatenate_videoclips, TextClip, CompositeVideoClip, AudioFileClip
+
 ### ** Background Music Creator Agent**
 def generate_music():
     """Creates AI-composed background music and saves it."""
