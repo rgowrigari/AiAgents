@@ -7,7 +7,7 @@ from autogen import AssistantAgent, UserProxyAgent
 from moviepy import ImageClip, concatenate_videoclips, TextClip, CompositeVideoClip, AudioFileClip
 
 ### ** Story Agent**
-def generate_story_agent(prompt):
+def generate_story(prompt):
     """Creates a structured story and saves it."""
     structured_prompt = f"""
     Write a structured story with:
