@@ -5,6 +5,7 @@ from io import BytesIO
 from PIL import Image
 from autogen import AssistantAgent, UserProxyAgent
 from moviepy import ImageClip, concatenate_videoclips, TextClip, CompositeVideoClip, AudioFileClip
+from .master_agent_config import master_workflow
 
 # Run the workflow (LOCAL EXECUTION)
 if __name__ == "__main__":
