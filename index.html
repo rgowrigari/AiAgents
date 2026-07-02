@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Personal website of Ravindar Gowrigari — engineer building AI agents and generative AI workflows." />
+  <title>Ravindar Gowrigari — AI Engineer</title>
+  <style>
+    :root {
+      --bg: #0f1420;
+      --surface: #171e2e;
+      --surface-2: #1e2740;
+      --text: #e8ecf4;
+      --muted: #9aa5bc;
+      --accent: #6ea8fe;
+      --accent-2: #9d7bff;
+      --border: #2a3450;
+      --radius: 14px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Segoe UI", system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container { max-width: 960px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* Nav */
+    nav {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(15, 20, 32, 0.85);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.9rem 1.5rem; max-width: 960px; margin: 0 auto;
+    }
+    .nav-name { font-weight: 700; letter-spacing: 0.02em; color: var(--text); }
+    .nav-links { display: flex; gap: 1.4rem; flex-wrap: wrap; }
+    .nav-links a { color: var(--muted); font-size: 0.95rem; }
+    .nav-links a:hover { color: var(--accent); text-decoration: none; }
+
+    /* Hero */
+    header.hero {
+      padding: 6rem 0 4.5rem;
+      background:
+        radial-gradient(600px 300px at 80% 10%, rgba(157, 123, 255, 0.15), transparent),
+        radial-gradient(600px 300px at 15% 90%, rgba(110, 168, 254, 0.12), transparent);
+      text-align: center;
+    }
+    .avatar {
+      width: 110px; height: 110px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 2.4rem; font-weight: 800; color: #0f1420;
+      margin-bottom: 1.4rem;
+    }
+    .hero h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; letter-spacing: -0.02em; }
+    .hero .tagline {
+      color: var(--accent);
+      font-size: 1.15rem; font-weight: 600; margin-top: 0.5rem;
+    }
+    .hero p.summary {
+      color: var(--muted); max-width: 620px; margin: 1.2rem auto 0;
+      font-size: 1.05rem;
+    }
+    .hero-cta { margin-top: 2rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      display: inline-block; padding: 0.7rem 1.5rem; border-radius: 999px;
+      font-weight: 600; font-size: 0.95rem; transition: transform 0.15s ease, opacity 0.15s ease;
+    }
+    .btn:hover { transform: translateY(-2px); text-decoration: none; opacity: 0.92; }
+    .btn-primary { background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #0f1420; }
+    .btn-outline { border: 1px solid var(--border); color: var(--text); }
+
+    /* Sections */
+    section { padding: 3.5rem 0; border-top: 1px solid var(--border); }
+    h2 {
+      font-size: 1.6rem; font-weight: 750; margin-bottom: 1.6rem;
+      display: flex; align-items: center; gap: 0.6rem;
+    }
+    h2::before {
+      content: ""; width: 26px; height: 4px; border-radius: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    }
+
+    /* About */
+    .about p { color: var(--muted); margin-bottom: 1rem; max-width: 760px; }
+    .about strong { color: var(--text); }
+
+    /* Cards */
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.2rem; }
+    .card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.4rem;
+      transition: transform 0.15s ease, border-color 0.15s ease;
+    }
+    .card:hover { transform: translateY(-3px); border-color: var(--accent); }
+    .card h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+    .card p { color: var(--muted); font-size: 0.95rem; }
+    .card .emoji { font-size: 1.6rem; display: block; margin-bottom: 0.6rem; }
+
+    /* Featured project */
+    .featured {
+      background: var(--surface-2); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.8rem; margin-bottom: 1.4rem;
+    }
+    .featured h3 { font-size: 1.25rem; margin-bottom: 0.4rem; }
+    .featured .badge {
+      display: inline-block; font-size: 0.75rem; font-weight: 700;
+      color: #0f1420; background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      border-radius: 999px; padding: 0.15rem 0.7rem; margin-bottom: 0.8rem;
+      letter-spacing: 0.04em; text-transform: uppercase;
+    }
+    .featured p { color: var(--muted); margin-bottom: 0.8rem; }
+    .pipeline {
+      display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0;
+    }
+    .pipeline span {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 8px; padding: 0.35rem 0.8rem; font-size: 0.85rem; color: var(--text);
+    }
+
+    /* Skills */
+    .tags { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+    .tags span {
+      background: var(--surface); border: 1px solid var(--border);
+      color: var(--text); border-radius: 999px; padding: 0.4rem 1rem;
+      font-size: 0.9rem;
+    }
+    .skill-group { margin-bottom: 1.6rem; }
+    .skill-group h3 { font-size: 1rem; color: var(--accent); margin-bottom: 0.7rem; font-weight: 650; }
+
+    /* Contact */
+    .contact-links { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1rem; }
+    .contact-links a {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 0.8rem 1.3rem; color: var(--text);
+      font-weight: 600; font-size: 0.95rem;
+      transition: border-color 0.15s ease, transform 0.15s ease;
+    }
+    .contact-links a:hover { border-color: var(--accent); transform: translateY(-2px); text-decoration: none; }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 0; text-align: center; color: var(--muted); font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <span class="nav-name">Ravindar Gowrigari</span>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container">
+      <div class="avatar">RG</div>
+      <h1>Ravindar Gowrigari</h1>
+      <div class="tagline">AI Engineer · Building Autonomous Agents &amp; Generative AI Workflows</div>
+      <p class="summary">
+        I design and build multi-agent AI systems that turn a single idea into rich creative output —
+        orchestrating language models, image generation, speech, and music into end-to-end automated pipelines.
+      </p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#projects">View My Work</a>
+        <a class="btn btn-outline" href="#contact">Get in Touch</a>
+      </div>
+    </div>
+  </header>
+
+  <section id="about" class="about">
+    <div class="container">
+      <h2>About Me</h2>
+      <p>
+        Hi, I'm <strong>Ravindar</strong> — a software engineer passionate about the frontier of
+        <strong>agentic AI</strong>. I love exploring how autonomous agents can collaborate to solve
+        complex, creative problems that no single model could handle alone.
+      </p>
+      <p>
+        My recent work focuses on <strong>multi-agent orchestration</strong>: building master agents
+        that coordinate specialized workers for storytelling, image generation, text-to-speech,
+        music composition, and video assembly. I enjoy taking cutting-edge AI capabilities and
+        wiring them together into practical, working systems.
+      </p>
+      <p>
+        When I'm not building agents, I'm experimenting with new models and frameworks, and
+        sharing what I learn through open-source projects on GitHub.
+      </p>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="container">
+      <h2>Projects</h2>
+
+      <div class="featured">
+        <span class="badge">Featured</span>
+        <h3>AiAgents — Multi-Agent Creative Framework</h3>
+        <p>
+          An agentic AI framework built with <strong>Microsoft AutoGen</strong> that transforms a single
+          text prompt into a fully produced video. A master agent orchestrates a team of specialized
+          agents, each responsible for one stage of the creative pipeline:
+        </p>
+        <div class="pipeline">
+          <span>📖 Story Agent</span>
+          <span>🎨 Image Agent</span>
+          <span>🗣️ TTS Agent</span>
+          <span>🎵 Music Agent</span>
+          <span>🎬 Video Agent</span>
+        </div>
+        <p>
+          Built with Python, AutoGen, OpenAI APIs, and MoviePy — from prompt to finished video,
+          fully automated.
+        </p>
+        <a href="https://github.com/rgowrigari/AiAgents">View on GitHub →</a>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <span class="emoji">🤖</span>
+          <h3>Agent Orchestration</h3>
+          <p>Master–worker agent patterns where a coordinating agent delegates tasks to specialized assistants and assembles the results.</p>
+        </div>
+        <div class="card">
+          <span class="emoji">🎥</span>
+          <h3>Generative Media Pipelines</h3>
+          <p>End-to-end pipelines combining LLM storytelling, AI image generation, neural text-to-speech, and programmatic video editing.</p>
+        </div>
+        <div class="card">
+          <span class="emoji">🧪</span>
+          <h3>AI Experimentation</h3>
+          <p>Ongoing exploration of new models, agent frameworks, and tooling — turning research ideas into runnable prototypes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="container">
+      <h2>Skills &amp; Technologies</h2>
+
+      <div class="skill-group">
+        <h3>AI &amp; Machine Learning</h3>
+        <div class="tags">
+          <span>Multi-Agent Systems</span>
+          <span>Microsoft AutoGen</span>
+          <span>LLM Orchestration</span>
+          <span>OpenAI APIs</span>
+          <span>Prompt Engineering</span>
+          <span>Generative AI</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h3>Languages &amp; Frameworks</h3>
+        <div class="tags">
+          <span>Python</span>
+          <span>MoviePy</span>
+          <span>Pillow (PIL)</span>
+          <span>REST APIs</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h3>Practices</h3>
+        <div class="tags">
+          <span>Workflow Automation</span>
+          <span>Open Source</span>
+          <span>Rapid Prototyping</span>
+          <span>Git &amp; GitHub</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <h2>Get in Touch</h2>
+      <p style="color: var(--muted); max-width: 620px;">
+        I'm always happy to talk about AI agents, generative media, or interesting engineering
+        problems. Reach out any time.
+      </p>
+      <div class="contact-links">
+        <a href="mailto:ravindar.gowrigari@gmail.com">✉️ ravindar.gowrigari@gmail.com</a>
+        <a href="https://github.com/rgowrigari">💻 github.com/rgowrigari</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      © 2026 Ravindar Gowrigari · Built with plain HTML &amp; CSS
+    </div>
+  </footer>
+
+</body>
+</html>
