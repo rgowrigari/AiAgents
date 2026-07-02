@@ -1,0 +1,6 @@
+# Deploy only the static website — exclude the Python AI agents project
+*.py
+Outputs/
+tmp
+README.md
+.git
